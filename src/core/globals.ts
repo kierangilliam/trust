@@ -4,8 +4,9 @@ type StructTo<T> = Record<string, T>
 
 type Globals = {
 	impl: {
-		fmt: StructTo<(x: unknown) => string>
-		into: StructTo<StructTo<(x: unknown) => unknown>>
+		// TODO instead of any, should be Struct or something
+		fmt: StructTo<(x: any) => string>
+		into: StructTo<StructTo<(x: any) => any>>
 	}
 }
 
@@ -27,7 +28,7 @@ const isConstructor = (x: unknown): x is Constructor => {
 		// @ts-ignore
 		new x()
 	} catch (err) {
-		if (err.message.indexOf('is not a constructor') >= 0) {
+		if (err instanceof Error && err.message.indexOf('is not a constructor') >= 0) {
 			return false
 		}
 	}

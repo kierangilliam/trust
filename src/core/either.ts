@@ -18,7 +18,7 @@ export class Either<L, R> {
 			this._left = Option.Some(left)
 			this._right = Option.None
 		} else {
-			throw Error(`Expected 'left' to not be null :: ${this._right}..${this._left}`)
+			throw Error(`Expected 'left' to not be null :: ${left}..${right}`)
 		}
 	}
 

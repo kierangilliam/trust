@@ -11,7 +11,7 @@ export * from './option'
 export * from './primitive'
 export * from './result'
 
-implInto(Result, <T>(o: Option<T>): Result<T, Error> => {
+implInto<Option<unknown>, Result<unknown, Error>>(Result, <T>(o: Option<T>): Result<T, Error> => {
 	if (o.isNone) {
 		return Result.Err(new Error('Conversion from Option resulted in None'))
 	}
@@ -19,7 +19,7 @@ implInto(Result, <T>(o: Option<T>): Result<T, Error> => {
 	return Result.Ok(o.unwrap)
 })(Option)
 
-implInto(Option, <T>(self: Result<T, Error>): Option<T> => {
+implInto<Result<unknown, Error>, Option<unknown>>(Option, <T>(self: Result<T, Error>): Option<T> => {
 	if (self.error) {
 		return Option.None
 	}

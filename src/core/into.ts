@@ -30,7 +30,5 @@ export function into<SOURCE, TARGET>(target: ConstructorOf<TARGET>, source: SOUR
 	if (!intoFns || !intoFns[getStructName(target)])
 		return Err(`into was not implemented for ${getStructName(source)} to ${getStructName(target)} (implInto)`)
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
 	return Result.Ok(intoFns[getStructName(target)](source))
 }

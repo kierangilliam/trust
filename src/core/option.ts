@@ -23,7 +23,7 @@ export class Option<T> {
 			this._some = some
 			this._none = false
 		} else {
-			throw Error(`Expected some to not be null :: ${this._none}..${this._some}`)
+			throw Error(`Expected some to not be null :: ${none}..${some}`)
 		}
 	}
 
@@ -39,6 +39,9 @@ export class Option<T> {
 		if (this._none) 
 			return or
 		
+		if (!this._some)
+			throw new Error('Error in initialization, this._some should exist')
+
 		return this._some
 	}
 	
@@ -46,6 +49,9 @@ export class Option<T> {
 		if (this._none) 
 			throw new ExpectError(throwWithMessage)
 		
+		if (!this._some)
+			throw new Error('Error in initialization, this._some should exist')
+
 		return this._some
 	}
 

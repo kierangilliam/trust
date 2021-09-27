@@ -18,7 +18,7 @@ export class Result<T, E extends Error> {
 			this._ok = ok
 			this._error = null
 		} else {
-			throw Error(`Expected 'ok' to not be null :: ${this._error}..${this._ok}`)
+			throw Error(`Expected 'ok' to not be null :: ${error}..${ok}`)
 		}
 	}
 
@@ -31,6 +31,9 @@ export class Result<T, E extends Error> {
 	expect(throwWithMessage: string): T { 
 		if (this._error) 
 			throw new ExpectError(throwWithMessage)
+
+		if (!this._ok)
+			throw new Error('Error in initialization, this._ok should exist')
 		
 		return this._ok
 	}
