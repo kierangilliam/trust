@@ -1,0 +1,26 @@
+{
+  "name": "@ollopa/trust",
+  "version": "0.1.0",
+  "description": "rust idioms in typescript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kierangilliam/trust.git"
+  },
+  "keywords": [
+    "rust"
+  ],
+  "author": "Kieran Gill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kierangilliam/trust/issues"
+  },
+  "homepage": "https://github.com/kierangilliam/trust#readme",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
